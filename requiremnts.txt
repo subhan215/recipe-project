@@ -1,0 +1,4 @@
+dj-static==0.0.6
+gunicorn==21.2.0
+packaging==23.2
+static3==0.7.0
