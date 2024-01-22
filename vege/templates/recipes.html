@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block start %}
+<style>
+  .myForm { 
+  color: #333333 !important; /* Text color */
+  background-color: rgba(230, 244, 240, 0.9) !important; /* Light teal background with transparency */
+  border: 1px solid #b0e5e5 !important; /* Teal border */
+  padding: 20px !important;
+  overflow: hidden !important;
+}
+.recipeH2 {
+  color: #008080 !important; /* Teal heading color */
+  text-align: center; /* Center the h2 text */
+}
+.alert {
+  background-color: #ffb6c1 !important; /* Light coral alert background */
+  border-color: #ff8080 !important; /* Coral border color */
+  color: #333333 !important; /* Text color */
+}
+label {
+  color: #333333 !important; /* Label text color */
+}
+
+.myBtn {
+  background-color: #008080 !important; /* Teal button background color */
+  border-color: #008080 !important; /* Teal button border color */
+  color: #fff !important; /* White button text color */
+  transition: background-color 0.3s ease !important; /* Add transition for smooth hover effect */
+}
+.myBtn:hover {
+  background-color: #005959 !important; /* Darker teal on hover */
+}
+.container {
+  margin-bottom: 20px ; 
+}
+/* Additional styles to prevent form overflow */
+.mt-nav {
+  margin-top: 80px; /* Adjust this value based on your needs */
+}
+
+@media (max-width: 960px) {
+  .mt-nav {
+    margin-top: 95px !important;
+    width: 100% ; 
+    margin-left: auto ; 
+    margin-right: auto ;  /* Adjust this value based on your needs */
+  }
+  .mt-nav form{
+    width: 50% ; 
+   }
+
+}
+@media (max-width: 550px) {
+  .mt-nav {
+    margin-left: 0; 
+    margin-right: 0;  /* Adjust this value based on your needs */
+  }
+  .mt-nav form{
+    width: 100% ; 
+   }
+  }
+  .addRecipeBtn {
+    background: white !important ; 
+    
+}
+.addRecipeBtn a{ 
+  color: black !important; 
+}
+</style>
+<div class="container mt-5 mt-nav" >
+    <form class="col-6 mx-auto card p-3 shadow-lg myForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class = "recipeH2">Add Recipe</h2>
+        <hr>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+            <input type="text" class="form-control" name="recipeName">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+            <textarea class="form-control" name="recipeDescription"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Image</label>
+            <input class="form-control" name="recipeImage" required type="file">
+        </div>
+        <button type="submit" class="btn btn-success myBtn">Add Recipe</button>
+    </form>
+    
+</div>
+{% endblock %}

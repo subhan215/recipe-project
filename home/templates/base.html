@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page }}</title>
+    <style>
+
+        body {
+           font-family: 'Arial', sans-serif !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: url('https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        
+        .navbar {
+            background: rgba(0, 0, 0, 0.7) !important;
+            color: #ffffff !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+            padding: 15px !important;
+            transition: background-color 0.5s ease, box-shadow 0.5s ease, padding 0.3s !important;
+        }
+    
+
+        .navbar-brand {
+            font-size: 2rem !important;
+            font-weight: bold !important;
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+        }
+        .myNav { 
+          display: flex !important; 
+          align-items: center !important;
+          justify-content: space-between !important; 
+          width: 100% ; 
+        }
+        
+
+        .searchDiv {
+            display: flex !important;
+            gap: 10px !important;
+            margin-top: 15px !important;
+        }
+    
+        .searchDiv button {
+            color: #fff !important;
+            background-color: #008080 !important;
+            border: none !important;
+            padding: 10px !important;
+            border-radius: 5px !important;
+            cursor: pointer !important;
+            transition: background-color 0.3s !important;
+        }
+        .searchDiv button:hover {
+            background-color: #006666 !important;
+        }
+    
+        .searchDiv input {
+            width: 200px !important;
+            padding: 10px !important;
+            border-radius: 5px !important;
+            border: 1px solid #ccc !important;
+            transition: border-color 0.3s !important;
+        }
+        .searchDiv input:focus {
+            border-color: #3498db !important;
+        }
+        .mb-3 {
+            margin-bottom: 15px !important;
+        }
+
+        .form-label {
+            color: #555 !important;
+        }
+
+        .form-control {
+            border-radius: 8px !important;
+            border: 1px solid #ccc !important;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+            transition: border-color 0.3s, box-shadow 0.3s !important;
+            flex: 1 !important;
+        }
+
+        .form-control:focus {
+            border-color: #3498db !important;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5) !important;
+        }
+
+        .btn-primary {
+            border-radius: 8px !important;
+            background-color: #3498db !important;
+            border-color: #2980b9 !important;
+            transition: background-color 0.3s, border-color 0.3s !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9 !important;
+            border-color: #2980b9 !important;
+        }
+
+        .btn-success {
+            margin-left: 10px !important;
+            border-radius: 8px !important;
+            background-color: #2ecc71 !important;
+            border-color: #27ae60 !important;
+            transition: background-color 0.3s, border-color 0.3s !important;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60 !important;
+            border-color: #27ae60 !important;
+        }
+
+        table {
+            width: 100% !important;
+            margin-top: 20px !important;
+            border-collapse: collapse !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        th, td {
+            padding: 15px !important;
+            text-align: left !important;
+            border: 1px solid #e0e0e0 !important;
+        }
+
+        th {
+            background-color: #3498db !important;
+            color: #ffffff !important;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ecf0f1 !important;
+        }
+
+        .navbar {
+            transition: background-color 0.5s ease, box-shadow 0.5s ease, padding 0.3s !important;
+        }
+        .logoutbtn {
+            background-color: #008080 !important;
+            color: #fff !important;
+            padding: 10px 15px !important;
+            border: none !important;
+            border-radius: 5px !important;
+            cursor: pointer !important;
+            transition: background-color 0.3s !important;
+        }
+    
+        .logoutbtn:hover {
+            background-color: #006666 !important;
+        }
+        .recipeNav {
+            display: flex !important;
+            justify-content: center !important;
+            margin-top: 20px !important;
+        }
+    
+        .recipeNavInner {
+            display: flex !important;
+            align-items: center !important;
+            border: none !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+        }
+    
+        .recipeBtn {
+            background: rgba(0, 0, 0, 0.7) !important;
+            padding: 15px ; 
+            border: none ; 
+        }
+    
+        .recipeBtn a {
+            color: white !important;
+            text-decoration: none !important;
+            font-weight: bold !important;
+            font-size: 1rem !important;
+            padding: 15px !important;
+           
+            border: none !important;
+            margin-bottom: none !important;
+            cursor: pointer !important;
+            transition: background 0.3s ease !important;
+        }
+    
+        .recipeBtn:hover {
+            background: #008080 !important;
+        }
+    
+       
+        
+        .nav ul{
+            display: flex ;
+            list-style-type: none;
+            margin-bottom: 0 ;
+            align-items: center ; 
+            justify-content: space-between  ; 
+            width: 700px ; 
+        }
+        .nav ul li{
+            display: inline-block;
+        }
+        .menu-icon{
+            width: 35px;
+            margin-left: 25px;
+            display: none;
+        }
+        @media (max-width: 960px) {
+            .nav {
+                overflow: hidden;
+            }
+    
+            .nav ul {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #333;
+                width: 100%;
+                overflow: hidden;
+                transition: max-height 0.5s;
+                text-align: center;
+                flex-direction: column;
+            }
+    
+            .nav ul li {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+    
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+            }
+        }
+        @media (max-width: 330px) {
+           .navbar-brand {
+               font-size: 1.5rem !important; 
+           }
+           .recipeBtn {
+            padding: 10px ; 
+           }
+           .recipeBtn a {
+               font-size: 0.7rem !important; 
+           }
+         }
+         @media (max-width: 280px) {
+            .navbar-brand {
+                font-size: 1.25rem !important; 
+            }
+          }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+        <nav class="navbar p-2 dark shadow-lg">
+            <div class="container-fluid myNav">
+                <div>
+                    <a class="navbar-brand">FlavorPedia</a>
+                </div>
+                <div class="nav">
+                    <ul id="MenuItems">
+                        <li>
+                            <form>
+                                <div class="searchDiv mb-3">
+                                    <input class="form-control" name="search" type="text" placeholder="Enter keywords">
+                                    <button class="btn" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </li>
+                        <li><a class="btn logoutbtn" href="/logout/">Log Out</a></li>
+                    </ul>
+                </div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHgx6LA6-E2qIx6lmOX_aUyU6K05_UufNqEY8PvtYChQ&s"
+                    class="menu-icon" onclick="menutoggle()" id="togglerimg">
+            </div>
+        </nav>
+        <div class="recipeNav">
+            <div class="recipeNavInner">
+                <div class="recipeBtn addRecipeBtn"><a href="/recipes/">Add Recipe </a></div>
+                <div class="recipeBtn allRecipeBtn"><a href="/allRecipes/">All Recipes </a></div>
+            </div>
+        </div>
+        <script>
+            var MenuItems = document.getElementById("MenuItems");
+            var togglerImg = document.getElementById("togglerimg");
+            
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "200px";
+                    togglerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq1bxWUw3jLA3z_ChEMiv0mD3qQ8roKFjnMvklBYrXZg&s"
+                }
+                else {
+                    MenuItems.style.maxHeight = "0px";
+                    togglerImg.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHgx6LA6-E2qIx6lmOX_aUyU6K05_UufNqEY8PvtYChQ&s"
+                }
+            }
+            // Your JavaScript code here
+        </script>
+    {% endif %}
+    {% block start %}{% endblock %}
+</body>
+</html>

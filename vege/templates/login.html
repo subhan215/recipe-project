@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block start %}
+     <head>
+      <style>
+        form { 
+          color: #333333 !important; /* Text color */
+          background-color: rgba(230, 244, 240, 0.9) !important; /* Light teal background with transparency */
+          border: 1px solid #b0e5e5 !important; /* Teal border */
+          padding: 20px !important;
+          margin-bottom: 20px ; 
+        }
+        h2 {
+          color: #008080 !important; /* Teal heading color */
+          text-align: center; /* Center the h2 text */
+        }
+        .alert {
+          background-color: #ffb6c1 !important; /* Light coral alert background */
+          border-color: #ff8080 !important; /* Coral border color */
+          color: #333333 !important; /* Text color */
+        }
+        label {
+          color: #333333 !important; /* Label text color */
+        }
+        a {
+          color: #007bff !important; /* Link color */
+        }
+        button {
+          background-color: #008080 !important; /* Teal button background color */
+          border-color: #008080 !important; /* Teal button border color */
+          color: #fff !important; /* White button text color */
+          transition: background-color 0.3s eas!important; /* Add transition for smooth hover effect */
+        }
+        button:hover {
+          background-color: #005959 !important; /* Darker teal on hover */
+        }
+        h3 { 
+          text-align: center; 
+          color: white !important; /* Teal heading color for h3 */
+        }
+        .flavorpediaDiv {
+            display:flex ; 
+            flex-direction: row ; 
+            justify-content: center ; 
+           
+          
+        }
+        .flavorpediaDiv h3{
+          text-align: center; 
+          color: white !important; /* Teal heading color for h3 */
+          border: 1px solid #b0e5e5 !important; /* Teal border for flavorpediaDiv */
+          background-color: rgba(0, 0, 0, 0.7) !important; /* Black transparent background */
+          margin-bottom: 0; 
+          width: 200px; 
+          border-radius: 5px; 
+          padding: 5px; /* Add padding for better appearance */
+          border-bottom: none ; 
+           
+        }
+        /* Media Query for Extra Small Screens (up to 576px) */ 
+        @media (max-width: 340px) {
+          form {
+            width: 260px !important ; 
+            
+          }
+        }
+    @media (min-width: 340px) and (max-width: 576px) {
+      form {
+        padding: 15px !important;
+        width: 300px !important ; 
+    
+      }
+     
+
+      h2 {
+        font-size: 1.5rem !important;
+      }
+
+      .flavorpediaDiv h3 {
+        font-size: 1rem !important;
+        width: 150px !important;
+        padding: 3px !important;
+      }
+    }
+
+    /* Media Query for Small Screens (576px - 767px) */
+    @media (min-width: 577px) and (max-width: 767px) {
+      form {
+        padding: 15px !important;
+      }
+    }
+
+    /* Media Query for Medium Screens (768px - 991px) */
+    @media (min-width: 768px) and (max-width: 991px) {
+      form {
+        padding: 15px !important;
+      }
+    }
+
+    /* Media Query for Large Screens (992px and above) */
+    @media (min-width: 992px) {
+      form {
+        padding: 20px !important;
+      }
+    }
+    .submitBtn {
+      background: #008080
+    }
+      </style>
+
+     </head>
+    <div class="container mt-5">
+        <div class = "flavorpediaDiv">
+            <h3>FlavorPedia</h3>
+        </div>
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data"
+              style="background-color: transparent; border: 1px solid #ccc; padding: 20px;">
+
+            {% csrf_token %}
+            <h2>Login</h2>
+
+            {% if messages %}
+              <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">User Name</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    name="userName">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            </div>
+
+            <p>Don't have an account? <a href="/register/">Register</a></p>
+            <button type="submit" class="btn submitBtn">Submit</button>
+        </form>
+    </div>
+{% endblock %}
