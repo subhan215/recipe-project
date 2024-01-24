@@ -56,20 +56,23 @@
     }
 </style>
 
-<div class="container mt-5">
+<<div class="container mt-5">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {% for recipe in recipes %}
-        <div class="col">
-            <div class="card recipe-card">
-                <img src="/media/{{ recipe.recipeImage }}" class="card-img-top" alt="Recipe Image" height="200px" width="100%">
-                <div class="card-body">
-                    <h5 class="card-title">{{ recipe.recipeName }}</h5>
-                    <p class="card-text">{{ recipe.recipeDescription }}</p>
-                    <a href="/delRecipe/{{ recipe.id }}/" class="btn btn-danger">Delete</a>
-                    <a href="/updRecipe/{{ recipe.id }}/" class="btn btn-success">Update</a>
+            <div class="col">
+                <div class="card recipe-card">
+                    <img src="/media/{{ recipe.recipeImage }}" class="card-img-top" alt="Recipe Image" height="200px"
+                         width="100%">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.recipeName }}</h5>
+                        <p class="card-text">{{ recipe.recipeDescription }}</p>
+                        {% if user.is_authenticated and user == recipe.user %}
+                            <a href="/delRecipe/{{ recipe.id }}/" class="btn btn-danger">Delete</a>
+                            <a href="/updRecipe/{{ recipe.id }}/" class="btn btn-success">Update</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 </div>

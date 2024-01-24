@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
 # Create your views here.
 @login_required(login_url="/login/")
 def allRecipes(request) : 
@@ -14,8 +16,6 @@ def allRecipes(request) :
         ifSearch = True
     context = {'recipes' : querySet , 'ifSearch' : ifSearch}
     return render(request , 'allRecipes.html' , context)
-
-
 
 
 @login_required(login_url="/login/")
@@ -31,7 +31,8 @@ def recipes(request):
         Recipe.objects.create(
             recipeImage=recipeImage,
             recipeDescription=recipeDescription,
-            recipeName=recipeName
+            recipeName=recipeName , 
+            user = request.user
         )
         return redirect('/recipes/')
     querySet = Recipe.objects.all()
@@ -105,28 +106,29 @@ def logOutPage(request) :
      return redirect('/login/')    
 
 
-def register(request) : 
-    if request.method == "POST" : 
-        firstName = request.POST.get('firstName')
-        lastName = request.POST.get('lastName')
-        userName = request.POST.get('userName')
-        password = request.POST.get('password')
-        
-        user = User.objects.filter(username = userName)
-        if user.exists() : 
-            messages.error(request , 'username already exists')
-            return redirect('/register/')
-        user = User.objects.create(
-            first_name = firstName , 
-            last_name = lastName , 
-            username = userName
-        )
-        user.set_password(password)
-        user.save()
-        
-        messages.info(request , 'Account Created Successfully!')
+
+
+def register(request): 
+    if request.method != "POST":
+        return render(request , 'register.html')
+    firstName = request.POST.get('firstName')
+    lastName = request.POST.get('lastName')
+    userName = request.POST.get('userName')
+    password = request.POST.get('password')
+
+    user = User.objects.filter(username = userName)
+    if user.exists() : 
+        messages.error(request , 'username already exists')
         return redirect('/register/')
-    
-    return render(request , 'register.html')     
+    user = User.objects.create(
+        first_name = firstName , 
+        last_name = lastName , 
+        username = userName
+    )
+    user.set_password(password)
+    user.save()
+
+    messages.info(request , 'Account Created Successfully!')
+    return redirect('/register/')     
 
 

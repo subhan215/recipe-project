@@ -8,7 +8,7 @@ class Recipe(models.Model) :
     recipeDescription = models.TextField()
     recipeImage = models.FileField(upload_to="recipe" , null = True)
     recipeViewCount = models.IntegerField(default = 1)
-
+    
 class Department(models.Model) : 
     department = models.CharField(max_length = 100)
 
